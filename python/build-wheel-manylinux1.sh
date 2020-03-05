@@ -21,25 +21,27 @@ NUMPY_VERSIONS=("1.14.5"
                 "1.14.5"
                 "1.14.5")
 
-sudo apt-get install unzip
-/ray/ci/travis/install-bazel.sh
+#sudo apt-get install unzip
+# ADD THIS TO DOCKER PATH
+#/ray/ci/travis/install-bazel.sh
 
 # Put bazel into the PATH
 export PATH=$PATH:/root/bin
 
+# INSTALL WITHOUT DASHBOARD
 # Install and use the latest version of Node.js in order to build the dashboard.
-set +x
-curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.34.0/install.sh | bash
-source $HOME/.nvm/nvm.sh
-nvm install node
-nvm use node
+#set +x
+#curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.34.0/install.sh | bash
+#source $HOME/.nvm/nvm.sh
+#nvm install node
+#nvm use node
 
 # Build the dashboard so its static assets can be included in the wheel.
-pushd python/ray/dashboard/client
-  npm ci
-  npm run build
-popd
-set -x
+#pushd python/ray/dashboard/client
+#  npm ci
+#  npm run build
+#popd
+#set -x
 
 mkdir .whl
 for ((i=0; i<${#PYTHONS[@]}; ++i)); do
