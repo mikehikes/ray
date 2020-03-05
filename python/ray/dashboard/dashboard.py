@@ -910,14 +910,15 @@ if __name__ == "__main__":
     ray.utils.setup_logger(args.logging_level, args.logging_format)
 
     try:
-        dashboard = Dashboard(
-            args.host,
-            args.port,
-            args.redis_address,
-            args.temp_dir,
-            redis_password=args.redis_password,
-        )
-        dashboard.run()
+     #   dashboard = Dashboard(
+     #       args.host,
+     #       args.port,
+     #       args.redis_address,
+     #       args.temp_dir,
+     #       redis_password=args.redis_password,
+     #   )
+     #   dashboard.run()
+        pass
     except Exception as e:
         # Something went wrong, so push an error to all drivers.
         redis_client = ray.services.create_redis_client(
